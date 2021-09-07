@@ -1,0 +1,15 @@
+<div class="social-icons">
+    {{- range . }}
+        {{- if eq .name "email" }}
+            {{ $mailgo := split .url " "}}
+            <a href="#mailgo" data-address="{{ index $mailgo 0 }}" data-domain="{{ index $mailgo 1 }}">
+                {{ partial "svg.html" . }}
+            </a>
+            <script src="https://unpkg.com/mailgo@0.12.2/dist/mailgo.min.js"></script>
+        {{- else }}
+            <a href="{{ trim .url " " }}" target="_blank" rel="noopener noreferrer me" title="{{ .name | title }}">
+                {{ partial "svg.html" . }}
+            </a>
+        {{- end }}
+    {{- end }}
+</div>
